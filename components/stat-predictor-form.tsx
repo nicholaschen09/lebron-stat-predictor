@@ -10,7 +10,7 @@ import { Slider } from "@/components/ui/slider"
 import { predictStats } from "@/lib/predict-stats"
 
 export default function StatPredictorForm() {
-  const [age, setAge] = useState(39)
+  const [age, setAge] = useState(40)
   const [minutesPerGame, setMinutesPerGame] = useState(35)
   const [teamStrength, setTeamStrength] = useState(70)
   const [restDays, setRestDays] = useState(15)
@@ -34,32 +34,32 @@ export default function StatPredictorForm() {
 
   const chartData = prediction
     ? [
-        {
-          name: "Points",
-          value: prediction.points,
-          fill: "#f97316",
-        },
-        {
-          name: "Rebounds",
-          value: prediction.rebounds,
-          fill: "#3b82f6",
-        },
-        {
-          name: "Assists",
-          value: prediction.assists,
-          fill: "#10b981",
-        },
-        {
-          name: "Steals",
-          value: prediction.steals,
-          fill: "#8b5cf6",
-        },
-        {
-          name: "Blocks",
-          value: prediction.blocks,
-          fill: "#f43f5e",
-        },
-      ]
+      {
+        name: "Points",
+        value: prediction.points,
+        fill: "#f97316",
+      },
+      {
+        name: "Rebounds",
+        value: prediction.rebounds,
+        fill: "#3b82f6",
+      },
+      {
+        name: "Assists",
+        value: prediction.assists,
+        fill: "#10b981",
+      },
+      {
+        name: "Steals",
+        value: prediction.steals,
+        fill: "#8b5cf6",
+      },
+      {
+        name: "Blocks",
+        value: prediction.blocks,
+        fill: "#f43f5e",
+      },
+    ]
     : []
 
   return (

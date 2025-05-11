@@ -11,7 +11,7 @@ const recentPredictions = [
   {
     id: 1,
     name: "Optimistic Fan",
-    age: 39,
+    age: 40,
     minutesPerGame: 38,
     teamStrength: 85,
     restDays: 5,
@@ -26,7 +26,7 @@ const recentPredictions = [
   {
     id: 2,
     name: "Realistic Analyst",
-    age: 39,
+    age: 40,
     minutesPerGame: 34,
     teamStrength: 75,
     restDays: 15,
@@ -41,7 +41,7 @@ const recentPredictions = [
   {
     id: 3,
     name: "Pessimistic Critic",
-    age: 39,
+    age: 40,
     minutesPerGame: 30,
     teamStrength: 65,
     restDays: 25,
