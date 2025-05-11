@@ -7,7 +7,6 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Skeleton } from "@/components/ui/skeleton"
 import StatPredictorForm from "@/components/stat-predictor-form"
-import RecentPredictions from "@/components/recent-predictions"
 
 export default function Home() {
   return (
@@ -36,7 +35,7 @@ export default function Home() {
               <div className="flex flex-col justify-center space-y-4">
                 <div className="space-y-2">
                   <h1 className="text-3xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/none text-black">
-                    Predict LeBron&apos;s 2024-25 Season Stats
+                    Predict LeBron&apos;s Next NBA Season Stats
                   </h1>
                   <p className="max-w-[600px] text-gray-500 md:text-xl">
                     Use our machine learning model to predict how the King will perform in the upcoming NBA season.
@@ -48,9 +47,6 @@ export default function Home() {
                     <Button className="bg-orange-600 hover:bg-orange-700">
                       Make a Prediction <ArrowRight className="ml-2 h-4 w-4" />
                     </Button>
-                  </Link>
-                  <Link href="#how-it-works">
-                    <Button variant="outline">How it Works</Button>
                   </Link>
                 </div>
               </div>
@@ -93,70 +89,6 @@ export default function Home() {
                     <Suspense fallback={<Skeleton className="h-[350px] w-full" />}>
                       <StatPredictorForm />
                     </Suspense>
-                  </CardContent>
-                </Card>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section className="w-full py-12 md:py-24 lg:py-32 bg-gray-100">
-          <div className="container px-4 md:px-6">
-            <div className="mx-auto grid max-w-5xl gap-6">
-              <div className="space-y-2 text-center">
-                <h2 className="text-3xl font-bold tracking-tighter md:text-4xl">Recent Predictions</h2>
-                <p className="text-gray-500 md:text-xl">
-                  See what others are predicting for LeBron&apos;s upcoming season
-                </p>
-              </div>
-              <Suspense fallback={<Skeleton className="h-[300px] w-full" />}>
-                <RecentPredictions />
-              </Suspense>
-            </div>
-          </div>
-        </section>
-
-        <section id="how-it-works" className="w-full py-12 md:py-24 lg:py-32">
-          <div className="container px-4 md:px-6">
-            <div className="mx-auto grid max-w-5xl gap-6">
-              <div className="space-y-2 text-center">
-                <h2 className="text-3xl font-bold tracking-tighter md:text-4xl">How It Works</h2>
-                <p className="text-gray-500 md:text-xl">
-                  Our machine learning model is trained on LeBron&apos;s career data
-                </p>
-              </div>
-              <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-                <Card>
-                  <CardHeader>
-                    <CardTitle>Historical Data</CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <p className="text-gray-500">
-                      We&apos;ve analyzed LeBron&apos;s stats from his entire career, including points, rebounds,
-                      assists, and efficiency metrics.
-                    </p>
-                  </CardContent>
-                </Card>
-                <Card>
-                  <CardHeader>
-                    <CardTitle>TensorFlow.js Model</CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <p className="text-gray-500">
-                      Our model uses TensorFlow.js to process the data and make predictions based on the parameters you
-                      provide.
-                    </p>
-                  </CardContent>
-                </Card>
-                <Card>
-                  <CardHeader>
-                    <CardTitle>Contextual Factors</CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <p className="text-gray-500">
-                      We consider factors like age, minutes played, team composition, and coaching strategies to refine
-                      our predictions.
-                    </p>
                   </CardContent>
                 </Card>
               </div>
