@@ -28,3 +28,7 @@ next-env.d.ts
 
 # history
 .history
+
+# Ignore TensorFlow.js model weights
+weights.bin
+
