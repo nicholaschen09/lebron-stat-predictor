@@ -1,5 +1,21 @@
 import * as tf from '@tensorflow/tfjs-node';
 import { LEBRON_STATS } from '../lib/lebron-stats.js';
+import * as fs from 'fs';
+import * as path from 'path';
+
+// Set cool background
+const backgroundImagePath = path.join(__dirname, '../assets/cool-background.jpg');
+if (fs.existsSync(backgroundImagePath)) {
+    const style = document.createElement('style');
+    style.textContent = `
+    body {
+      background-image: url('${backgroundImagePath}');
+      background-size: cover;
+      background-position: center;
+    }
+  `;
+    document.head.appendChild(style);
+}
 
 // Prepare training data
 const features: number[][] = [];
