@@ -72,7 +72,7 @@ export default function Home() {
                   ML-Powered Predictions
                 </div>
                 <h2 className="text-3xl font-bold tracking-tighter md:text-4xl">Predict LeBron&apos;s Performance</h2>
-                <p className="text-gray-500 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
+                <p className="text-white md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
                   Our model analyzes LeBron&apos;s career trajectory, age, minutes played, and team context to predict
                   his stats for the upcoming season.
                 </p>
