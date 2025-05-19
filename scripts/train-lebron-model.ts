@@ -1,21 +1,28 @@
 import * as tf from '@tensorflow/tfjs-node';
 import { LEBRON_STATS } from '../lib/lebron-stats.js';
-import * as fs from 'fs';
-import * as path from 'path';
 
-// Set cool background
-const backgroundImagePath = path.join(__dirname, '../assets/cool-background.jpg');
-if (fs.existsSync(backgroundImagePath)) {
-    const style = document.createElement('style');
-    style.textContent = `
-    body {
-      background-image: url('${backgroundImagePath}');
-      background-size: cover;
-      background-position: center;
-    }
-  `;
-    document.head.appendChild(style);
-}
+// Set dark orange background
+const style = document.createElement('style');
+style.textContent = `
+  body {
+    background-color: rgb(192, 84, 63);
+    color: white;
+  }
+  .model-description {
+    color: white important;
+    font-size: 1.2em;
+    text-align: center;
+    padding: 20px;
+    margin: 20px;
+  }
+`;
+document.head.appendChild(style);
+
+// Add model description
+const description = document.createElement('div');
+description.className = 'model-description';
+description.textContent = 'Our model analyzes LeBron\'s career trajectory, age, minutes played, and team context to predict his stats for the upcoming season.';
+document.body.appendChild(description);
 
 // Prepare training data
 const features: number[][] = [];

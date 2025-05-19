@@ -60,7 +60,11 @@
   * {
     @apply border-border;
   }
+
   body {
     @apply bg-background text-foreground;
+    background: linear-gradient(135deg, #ff9800 0%, #ff6d00 100%);
+    background-size: cover;
+    background-position: center;
   }
 }
