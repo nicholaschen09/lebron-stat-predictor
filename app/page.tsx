@@ -66,8 +66,8 @@ export default function Home() {
 
         <section id="predictor" className="w-full py-12 md:py-24 lg:py-32">
           <div className="container px-4 md:px-6">
-            <div className="mx-auto grid max-w-7xl items-center gap-6 py-12 lg:grid-cols-12 lg:gap-12">
-              <div className="lg:col-span-5 space-y-4">
+            <div className="mx-auto max-w-4xl flex flex-col items-center gap-8 py-12">
+              <div className="w-full space-y-4 text-center">
                 <div className="inline-block rounded-lg bg-orange-100 px-3 py-1 text-sm text-orange-800">
                   ML-Powered Predictions
                 </div>
@@ -77,7 +77,7 @@ export default function Home() {
                   his stats for the upcoming season.
                 </p>
               </div>
-              <div className="flex flex-col gap-2 min-h-[450px] w-full lg:col-span-7">
+              <div className="flex flex-col gap-2 min-h-[450px] w-full">
                 <Card className="w-full">
                   <CardHeader>
                     <CardTitle>Stat Predictor</CardTitle>
