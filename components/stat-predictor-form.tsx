@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect, useRef } from "react"
 import { Bar, BarChart, CartesianGrid, Legend, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts"
 
 import { Button } from "@/components/ui/button"
@@ -36,6 +36,32 @@ export default function StatPredictorForm() {
     blocks: number
   }>(null)
   const [fact, setFact] = useState<string | null>(null);
+  const cardRef = useRef<HTMLDivElement>(null);
+
+  // On mount, check for URL params
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const ageParam = params.get("age");
+    const minParam = params.get("minutes");
+    const teamParam = params.get("team");
+    const restParam = params.get("rest");
+    if (ageParam && minParam && teamParam && restParam) {
+      setAge(Number(ageParam));
+      setMinutesPerGame(Number(minParam));
+      setTeamStrength(Number(teamParam));
+      setRestDays(Number(restParam));
+      // Predict automatically
+      const stats = predictStats({
+        age: Number(ageParam),
+        minutesPerGame: Number(minParam),
+        teamStrength: Number(teamParam),
+        restDays: Number(restParam),
+      });
+      setPrediction(stats);
+      const randomFact = LEBRON_FACTS[Math.floor(Math.random() * LEBRON_FACTS.length)]
+      setFact(randomFact)
+    }
+  }, []);
 
   const handlePredict = () => {
     const stats = predictStats({
@@ -49,6 +75,28 @@ export default function StatPredictorForm() {
     const randomFact = LEBRON_FACTS[Math.floor(Math.random() * LEBRON_FACTS.length)]
     setFact(randomFact)
   }
+
+  // Copy shareable link
+  const handleCopyLink = () => {
+    const url = new URL(window.location.href);
+    url.searchParams.set("age", String(age));
+    url.searchParams.set("minutes", String(minutesPerGame));
+    url.searchParams.set("team", String(teamStrength));
+    url.searchParams.set("rest", String(restDays));
+    navigator.clipboard.writeText(url.toString());
+  };
+
+  // Download as image
+  const handleDownloadImage = async () => {
+    if (!cardRef.current) return;
+    const htmlToImage = await import("html-to-image");
+    htmlToImage.toPng(cardRef.current).then((dataUrl) => {
+      const link = document.createElement('a');
+      link.download = 'lebron-prediction.png';
+      link.href = dataUrl;
+      link.click();
+    });
+  };
 
   const chartData = prediction
     ? [
@@ -129,7 +177,7 @@ export default function StatPredictorForm() {
 
       {prediction && (
         <div className="w-full md:col-span-8 flex items-center px-2 sm:px-4">
-          <Card className="w-full max-w-full h-fit shadow-xl border-2 border-gray-100 mx-auto">
+          <Card className="w-full max-w-full h-fit shadow-xl border-2 border-gray-100 mx-auto" ref={cardRef}>
             <CardContent className="pt-8 pb-8 px-2 sm:px-6 md:px-12 space-y-8">
               <div className="space-y-6">
                 <h3 className="text-2xl font-bold text-center">Predicted 2024-25 Season Stats</h3>
@@ -170,6 +218,10 @@ export default function StatPredictorForm() {
                     <p className="text-sm text-gray-500">Games</p>
                     <p className="text-2xl font-bold">{82 - restDays}</p>
                   </div>
+                </div>
+                <div className="flex flex-col sm:flex-row gap-4 justify-center mt-6">
+                  <button onClick={handleCopyLink} className="px-4 py-2 rounded bg-orange-100 text-orange-800 border border-orange-300 hover:bg-orange-200 transition">Copy Shareable Link</button>
+                  <button onClick={handleDownloadImage} className="px-4 py-2 rounded bg-orange-100 text-orange-800 border border-orange-300 hover:bg-orange-200 transition">Download as Image</button>
                 </div>
                 {fact && (
                   <div className="mt-8 text-center text-base italic text-orange-800 bg-orange-50 rounded-lg px-4 py-3">
