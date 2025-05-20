@@ -85,7 +85,7 @@ export default function Home() {
                       Adjust the parameters to see how they might affect LeBron&apos;s performance
                     </CardDescription>
                   </CardHeader>
-                  <CardContent>
+                  <CardContent className="min-h-[600px]">
                     <Suspense fallback={<Skeleton className="h-[350px] w-full" />}>
                       <StatPredictorForm />
                     </Suspense>
