@@ -63,55 +63,57 @@ export default function StatPredictorForm() {
     : []
 
   return (
-    <div className="space-y-6">
-      <div className="space-y-4">
-        <div className="space-y-2">
-          <Label htmlFor="age">Age: {age}</Label>
-          <Slider id="age" min={35} max={45} step={1} value={[age]} onValueChange={(value) => setAge(value[0])} />
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+      <div className="space-y-6">
+        <div className="space-y-4">
+          <div className="space-y-2">
+            <Label htmlFor="age">Age: {age}</Label>
+            <Slider id="age" min={35} max={45} step={1} value={[age]} onValueChange={(value) => setAge(value[0])} />
+          </div>
+          <div className="space-y-2">
+            <Label htmlFor="minutes">Minutes Per Game: {minutesPerGame}</Label>
+            <Slider
+              id="minutes"
+              min={25}
+              max={40}
+              step={1}
+              value={[minutesPerGame]}
+              onValueChange={(value) => setMinutesPerGame(value[0])}
+            />
+          </div>
+          <div className="space-y-2">
+            <Label htmlFor="team-strength">Team Strength (0-100): {teamStrength}</Label>
+            <Slider
+              id="team-strength"
+              min={50}
+              max={90}
+              step={1}
+              value={[teamStrength]}
+              onValueChange={(value) => setTeamStrength(value[0])}
+            />
+          </div>
+          <div className="space-y-2">
+            <Label htmlFor="rest-days">Load Management (Rest Days): {restDays}</Label>
+            <Slider
+              id="rest-days"
+              min={0}
+              max={30}
+              step={1}
+              value={[restDays]}
+              onValueChange={(value) => setRestDays(value[0])}
+            />
+          </div>
         </div>
-        <div className="space-y-2">
-          <Label htmlFor="minutes">Minutes Per Game: {minutesPerGame}</Label>
-          <Slider
-            id="minutes"
-            min={25}
-            max={40}
-            step={1}
-            value={[minutesPerGame]}
-            onValueChange={(value) => setMinutesPerGame(value[0])}
-          />
-        </div>
-        <div className="space-y-2">
-          <Label htmlFor="team-strength">Team Strength (0-100): {teamStrength}</Label>
-          <Slider
-            id="team-strength"
-            min={50}
-            max={90}
-            step={1}
-            value={[teamStrength]}
-            onValueChange={(value) => setTeamStrength(value[0])}
-          />
-        </div>
-        <div className="space-y-2">
-          <Label htmlFor="rest-days">Load Management (Rest Days): {restDays}</Label>
-          <Slider
-            id="rest-days"
-            min={0}
-            max={30}
-            step={1}
-            value={[restDays]}
-            onValueChange={(value) => setRestDays(value[0])}
-          />
-        </div>
+        <Button onClick={handlePredict} className="w-full bg-orange-600 hover:bg-orange-700">
+          Predict Stats
+        </Button>
       </div>
-      <Button onClick={handlePredict} className="w-full bg-orange-600 hover:bg-orange-700">
-        Predict Stats
-      </Button>
 
       {prediction && (
-        <Card className="mt-6">
+        <Card className="h-fit">
           <CardContent className="pt-6">
-            <div className="space-y-2">
-              <h3 className="text-lg font-bold">Predicted 2024-25 Season Stats</h3>
+            <div className="space-y-4">
+              <h3 className="text-xl font-bold text-center">Predicted 2024-25 Season Stats</h3>
               <div className="h-[300px] w-full">
                 <ResponsiveContainer width="100%" height="100%">
                   <BarChart data={chartData} margin={{ top: 20, right: 30, left: 20, bottom: 5 }}>
