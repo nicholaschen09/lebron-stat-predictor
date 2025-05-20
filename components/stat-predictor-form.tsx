@@ -131,7 +131,7 @@ export default function StatPredictorForm() {
 
   return (
     <div className="flex flex-col w-full gap-8">
-      <Card className="w-full max-w-full h-fit shadow-xl border-2 border-gray-100 mx-auto" ref={cardRef}>
+      <Card className="w-full max-w-full h-fit shadow-xl bg-orange-50 mx-auto" ref={cardRef}>
         <CardContent className="pt-8 pb-8 px-2 sm:px-6 md:px-12 space-y-8">
           {/* Inputs and button on top */}
           <div className="w-full space-y-6">
