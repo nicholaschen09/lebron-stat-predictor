@@ -9,6 +9,20 @@ import { Label } from "@/components/ui/label"
 import { Slider } from "@/components/ui/slider"
 import { predictStats } from "@/lib/predict-stats"
 
+// Add LeBron facts/quotes
+const LEBRON_FACTS = [
+  "LeBron James is the only player in NBA history to record over 10,000 points, 10,000 rebounds, and 10,000 assists.",
+  '"You have to be able to accept failure to get better."',
+  "LeBron has appeared in 10 NBA Finals, winning 4 championships.",
+  '"I like criticism. It makes you strong."',
+  "LeBron was the youngest player to score 40 points in a game.",
+  '"Don\'t be afraid of failure. This is the way to succeed."',
+  "LeBron was drafted #1 overall by the Cleveland Cavaliers in 2003.",
+  '"I treated it like every day was my last day with a basketball."',
+  "LeBron is a four-time NBA MVP (2009, 2010, 2012, 2013).",
+  '"Commitment is a big part of what I am and what I believe."',
+];
+
 export default function StatPredictorForm() {
   const [age, setAge] = useState(40)
   const [minutesPerGame, setMinutesPerGame] = useState(35)
@@ -21,6 +35,7 @@ export default function StatPredictorForm() {
     steals: number
     blocks: number
   }>(null)
+  const [fact, setFact] = useState<string | null>(null);
 
   const handlePredict = () => {
     const stats = predictStats({
@@ -30,6 +45,9 @@ export default function StatPredictorForm() {
       restDays,
     })
     setPrediction(stats)
+    // Pick a random fact/quote
+    const randomFact = LEBRON_FACTS[Math.floor(Math.random() * LEBRON_FACTS.length)]
+    setFact(randomFact)
   }
 
   const chartData = prediction
@@ -153,6 +171,11 @@ export default function StatPredictorForm() {
                     <p className="text-2xl font-bold">{82 - restDays}</p>
                   </div>
                 </div>
+                {fact && (
+                  <div className="mt-8 text-center text-base italic text-orange-800 bg-orange-50 rounded-lg px-4 py-3">
+                    {fact}
+                  </div>
+                )}
               </div>
             </CardContent>
           </Card>
