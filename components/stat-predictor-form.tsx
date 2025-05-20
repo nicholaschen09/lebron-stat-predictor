@@ -63,8 +63,8 @@ export default function StatPredictorForm() {
     : []
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-      <div className="space-y-6">
+    <div className="grid grid-cols-1 md:grid-cols-12 gap-8">
+      <div className="md:col-span-4 space-y-6">
         <div className="space-y-4">
           <div className="space-y-2">
             <Label htmlFor="age">Age: {age}</Label>
@@ -110,51 +110,53 @@ export default function StatPredictorForm() {
       </div>
 
       {prediction && (
-        <Card className="h-fit">
-          <CardContent className="pt-6">
-            <div className="space-y-4">
-              <h3 className="text-xl font-bold text-center">Predicted 2024-25 Season Stats</h3>
-              <div className="h-[300px] w-full">
-                <ResponsiveContainer width="100%" height="100%">
-                  <BarChart data={chartData} margin={{ top: 20, right: 30, left: 20, bottom: 5 }}>
-                    <CartesianGrid strokeDasharray="3 3" />
-                    <XAxis dataKey="name" />
-                    <YAxis />
-                    <Tooltip />
-                    <Legend />
-                    <Bar dataKey="value" name="Per Game" />
-                  </BarChart>
-                </ResponsiveContainer>
+        <div className="md:col-span-8 flex items-center">
+          <Card className="w-full max-w-3xl h-fit shadow-xl border-2 border-gray-100 mx-auto">
+            <CardContent className="pt-10 pb-10 px-12 space-y-8">
+              <div className="space-y-6">
+                <h3 className="text-2xl font-bold text-center">Predicted 2024-25 Season Stats</h3>
+                <div className="h-[320px] w-full">
+                  <ResponsiveContainer width="100%" height="100%">
+                    <BarChart data={chartData} margin={{ top: 20, right: 30, left: 20, bottom: 5 }}>
+                      <CartesianGrid strokeDasharray="3 3" />
+                      <XAxis dataKey="name" />
+                      <YAxis />
+                      <Tooltip />
+                      <Legend />
+                      <Bar dataKey="value" name="Per Game" />
+                    </BarChart>
+                  </ResponsiveContainer>
+                </div>
+                <div className="grid grid-cols-2 gap-6 sm:grid-cols-3 mt-8">
+                  <div className="space-y-1">
+                    <p className="text-sm text-gray-500">Points</p>
+                    <p className="text-2xl font-bold text-orange-600">{prediction.points.toFixed(1)}</p>
+                  </div>
+                  <div className="space-y-1">
+                    <p className="text-sm text-gray-500">Rebounds</p>
+                    <p className="text-2xl font-bold text-blue-600">{prediction.rebounds.toFixed(1)}</p>
+                  </div>
+                  <div className="space-y-1">
+                    <p className="text-sm text-gray-500">Assists</p>
+                    <p className="text-2xl font-bold text-green-600">{prediction.assists.toFixed(1)}</p>
+                  </div>
+                  <div className="space-y-1">
+                    <p className="text-sm text-gray-500">Steals</p>
+                    <p className="text-2xl font-bold text-purple-600">{prediction.steals.toFixed(1)}</p>
+                  </div>
+                  <div className="space-y-1">
+                    <p className="text-sm text-gray-500">Blocks</p>
+                    <p className="text-2xl font-bold text-pink-600">{prediction.blocks.toFixed(1)}</p>
+                  </div>
+                  <div className="space-y-1">
+                    <p className="text-sm text-gray-500">Games</p>
+                    <p className="text-2xl font-bold">{82 - restDays}</p>
+                  </div>
+                </div>
               </div>
-              <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 mt-4">
-                <div className="space-y-1">
-                  <p className="text-sm text-gray-500">Points</p>
-                  <p className="text-xl font-bold text-orange-600">{prediction.points.toFixed(1)}</p>
-                </div>
-                <div className="space-y-1">
-                  <p className="text-sm text-gray-500">Rebounds</p>
-                  <p className="text-xl font-bold text-blue-600">{prediction.rebounds.toFixed(1)}</p>
-                </div>
-                <div className="space-y-1">
-                  <p className="text-sm text-gray-500">Assists</p>
-                  <p className="text-xl font-bold text-green-600">{prediction.assists.toFixed(1)}</p>
-                </div>
-                <div className="space-y-1">
-                  <p className="text-sm text-gray-500">Steals</p>
-                  <p className="text-xl font-bold text-purple-600">{prediction.steals.toFixed(1)}</p>
-                </div>
-                <div className="space-y-1">
-                  <p className="text-sm text-gray-500">Blocks</p>
-                  <p className="text-xl font-bold text-pink-600">{prediction.blocks.toFixed(1)}</p>
-                </div>
-                <div className="space-y-1">
-                  <p className="text-sm text-gray-500">Games</p>
-                  <p className="text-xl font-bold">{82 - restDays}</p>
-                </div>
-              </div>
-            </div>
-          </CardContent>
-        </Card>
+            </CardContent>
+          </Card>
+        </div>
       )}
     </div>
   )
