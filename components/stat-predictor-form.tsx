@@ -63,8 +63,8 @@ export default function StatPredictorForm() {
     : []
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-12 gap-8">
-      <div className="md:col-span-4 space-y-6">
+    <div className="flex flex-col w-full gap-8 md:grid md:grid-cols-12">
+      <div className="w-full md:col-span-4 space-y-6 px-2 sm:px-4">
         <div className="space-y-4">
           <div className="space-y-2">
             <Label htmlFor="age">Age: {age}</Label>
@@ -110,9 +110,9 @@ export default function StatPredictorForm() {
       </div>
 
       {prediction && (
-        <div className="md:col-span-8 flex items-center">
-          <Card className="w-full max-w-3xl h-fit shadow-xl border-2 border-gray-100 mx-auto">
-            <CardContent className="pt-10 pb-10 px-12 space-y-8">
+        <div className="w-full md:col-span-8 flex items-center px-2 sm:px-4">
+          <Card className="w-full max-w-full h-fit shadow-xl border-2 border-gray-100 mx-auto">
+            <CardContent className="pt-8 pb-8 px-2 sm:px-6 md:px-12 space-y-8">
               <div className="space-y-6">
                 <h3 className="text-2xl font-bold text-center">Predicted 2024-25 Season Stats</h3>
                 <div className="h-[320px] w-full">
