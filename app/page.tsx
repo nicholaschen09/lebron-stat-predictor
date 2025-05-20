@@ -64,7 +64,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section id="predictor" className="w-full py-12 md:py-24 lg:py-32">
+        <section id="predictor" className="w-full py-12 md:py-24 lg:py-32 -mt-16">
           <div className="container px-4 md:px-6">
             <div className="mx-auto max-w-4xl flex flex-col items-center gap-8 py-12">
               <div className="w-full space-y-4 text-center">
