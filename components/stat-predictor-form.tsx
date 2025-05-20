@@ -8,6 +8,7 @@ import { Card, CardContent } from "@/components/ui/card"
 import { Label } from "@/components/ui/label"
 import { Slider } from "@/components/ui/slider"
 import { predictStats } from "@/lib/predict-stats"
+import { LEBRON_STATS } from "../lib/lebron-stats.js"
 
 // Add LeBron facts/quotes
 const LEBRON_FACTS = [
@@ -218,6 +219,26 @@ export default function StatPredictorForm() {
                     <p className="text-sm text-gray-500">Games</p>
                     <p className="text-2xl font-bold">{82 - restDays}</p>
                   </div>
+                </div>
+                {/* Career stats line chart */}
+                <div className="h-[180px] w-full mt-4">
+                  <ResponsiveContainer width="100%" height="100%">
+                    <BarChart data={LEBRON_STATS.map(season => ({
+                      season: season.season,
+                      Points: season.points,
+                      Rebounds: season.rebounds,
+                      Assists: season.assists,
+                    }))} margin={{ top: 10, right: 20, left: 0, bottom: 5 }}>
+                      <CartesianGrid strokeDasharray="3 3" />
+                      <XAxis dataKey="season" tick={{ fontSize: 10 }} />
+                      <YAxis />
+                      <Tooltip />
+                      <Legend />
+                      <Bar dataKey="Points" fill="#f97316" />
+                      <Bar dataKey="Rebounds" fill="#3b82f6" />
+                      <Bar dataKey="Assists" fill="#10b981" />
+                    </BarChart>
+                  </ResponsiveContainer>
                 </div>
                 <div className="flex flex-col sm:flex-row gap-4 justify-center mt-6">
                   <button onClick={handleCopyLink} className="px-4 py-2 rounded bg-orange-100 text-orange-800 border border-orange-300 hover:bg-orange-200 transition">Copy Shareable Link</button>
